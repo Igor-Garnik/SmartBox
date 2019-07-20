@@ -1,0 +1,12 @@
+@import "../abstracts/variables";
+
+.wrapper {
+  margin: 15vh auto;
+  width: 300px;
+  text-align: center;
+
+    .header {
+      margin-bottom: 40px;
+      font-weight: 500;
+    }
+}

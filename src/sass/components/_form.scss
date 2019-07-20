@@ -1,0 +1,7 @@
+@import "../abstracts/variables";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  font-size: $default-font-size;
+}
