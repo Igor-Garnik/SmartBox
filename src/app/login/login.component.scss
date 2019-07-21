@@ -1,0 +1,14 @@
+@import "../../sass/abstracts/variables";
+@import "../../sass/components/wrapper";
+@import "../../sass/components/form";
+@import "../../sass/components/btn-block";
+
+
+.button a {
+  color: $primary-color;
+  text-decoration: none;
+}
+
+.notify {
+  color: $notify-color;
+}
