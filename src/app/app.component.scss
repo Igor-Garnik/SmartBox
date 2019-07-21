@@ -1,0 +1,15 @@
+@import "../sass/abstracts/variables";
+
+:host {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    height: 40px;
+  }
+}
+
+
