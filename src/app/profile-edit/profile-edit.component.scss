@@ -1,0 +1,31 @@
+@import "../../sass/abstracts/variables";
+@import "../../sass/components/wrapper";
+@import "../../sass/components/form";
+@import "../../sass/components/btn-block";
+
+.wrapper {
+  margin: 10vh auto;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: row;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field div:first-child {
+  width: 50%;
+  color: $grey-color;
+}
+
+.form-field div:last-child {
+  width: 50%;
+}
+
+::ng-deep .mat-form-field-infix{
+  display: flex !important;
+}
