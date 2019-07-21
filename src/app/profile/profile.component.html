@@ -1,3 +1,47 @@
-<p>
-  profile works!
-</p>
+<div class="wrapper">
+  <h2 class="header">HI IGOR GARNIK!</h2>
+  <form class="form" [formGroup]="form">
+    <mat-form-field class="form-field test">
+      <div>
+        <mat-label>First Name</mat-label>
+      </div>
+      <div>
+        <input matInput formControlName="firstName" readonly>
+      </div>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <div>
+        <mat-label>Last Name</mat-label>
+      </div>
+      <div>
+        <input matInput formControlName="lastName" readonly>
+      </div>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <div>
+        <mat-label>Age</mat-label>
+      </div>
+      <div>
+        <input matInput formControlName="age" readonly>
+      </div>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <div>
+        <mat-label>Country</mat-label>
+      </div>
+      <div>
+        <input matInput formControlName="country" readonly>
+      </div>
+    </mat-form-field>
+
+    <div class="btn-block">
+      <button mat-raised-button class="button">
+        <a class="link" routerLink="/profile/edit">EDIT</a>
+      </button>
+      <button mat-button class="button" (click)="logOut()">LOGOUT</button>
+    </div>
+  </form>
+</div>
