@@ -7,7 +7,7 @@
     </mat-form-field>
 
     <mat-form-field class="form-field">
-      <input matInput placeholder="Password" formControlName="password">
+      <input type="password" matInput placeholder="Password" formControlName="password">
       <mat-error *ngIf="password.invalid">
         Password must be between 6 and 24 chars and have at least one number
       </mat-error>
