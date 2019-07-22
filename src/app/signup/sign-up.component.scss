@@ -1,0 +1,12 @@
+@import "../../sass/abstracts/variables";
+@import "../../sass/components/wrapper";
+@import "../../sass/components/form";
+@import "../../sass/components/btn-block";
+
+.wrapper {
+  margin: 5vh auto;
+}
+
+.link {
+  color: $light-green-color
+}
