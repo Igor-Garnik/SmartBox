@@ -1,47 +1,67 @@
-<div class="wrapper">
-  <h2 class="header">EDIT INFO</h2>
-  <form class="form" [formGroup]="form" (ngSubmit)="submit()">
-    <mat-form-field class="form-field test">
-      <div>
-        <mat-label>First Name</mat-label>
-      </div>
-      <div>
-        <input matInput formControlName="firstName">
-      </div>
-    </mat-form-field>
+<ng-template #elseBlock>
+  <mat-spinner class="spinner"></mat-spinner>
+</ng-template>
+<ng-container *ngIf="user$ | async; else elseBlock">
+  <div class="wrapper">
+    <h2 class="header">{{title}}</h2>
+    <form class="form" [formGroup]="form">
+      <mat-form-field class="form-field test">
+        <div>
+          <mat-label>First Name</mat-label>
+        </div>
+        <div>
+          <input matInput formControlName="firstName">
+          <mat-error *ngIf="firstName.invalid">
+            First name is required field
+          </mat-error>
+        </div>
+      </mat-form-field>
 
-    <mat-form-field class="form-field">
-      <div>
-        <mat-label>Last Name</mat-label>
-      </div>
-      <div>
-        <input matInput formControlName="lastName">
-      </div>
-    </mat-form-field>
+      <mat-form-field class="form-field">
+        <div>
+          <mat-label>Last Name</mat-label>
+        </div>
+        <div>
+          <input matInput formControlName="lastName">
+          <mat-error *ngIf="lastName.invalid">
+            Last name is required field
+          </mat-error>
+        </div>
+      </mat-form-field>
 
-    <mat-form-field class="form-field">
-      <div>
-        <mat-label>Age</mat-label>
-      </div>
-      <div>
-        <input matInput formControlName="age">
-      </div>
-    </mat-form-field>
+      <mat-form-field class="form-field">
+        <div>
+          <mat-label>Age</mat-label>
+        </div>
+        <div>
+          <input matInput formControlName="age">
+          <mat-error *ngIf="age.hasError('required')">
+            Age is required field
+          </mat-error>
+          <mat-error *ngIf="age.hasError('maxlength')">
+            Age can`t contains more the 2 chars
+          </mat-error>
+        </div>
+      </mat-form-field>
 
-    <mat-form-field class="form-field">
-      <div>
-        <mat-label>Country</mat-label>
-      </div>
-      <div>
-        <input matInput formControlName="country">
-      </div>
-    </mat-form-field>
+      <mat-form-field class="form-field">
+        <div>
+          <mat-label>Country</mat-label>
+        </div>
+        <div>
+          <input matInput formControlName="country">
+          <mat-error *ngIf="country.invalid">
+            Country is required field
+          </mat-error>
+        </div>
+      </mat-form-field>
 
-    <div class="btn-block">
-      <button mat-raised-button class="button">SAVE</button>
-      <button mat-button class="button">
-        <a class="link" routerLink="/profile">CANCEL</a>
-      </button>
-    </div>
-  </form>
-</div>
+      <div class="btn-block">
+        <button mat-button class="button" (click)="save()">SAVE</button>
+        <button mat-button class="button">
+          <a class="link" routerLink="/profile">CANCEL</a>
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-container>

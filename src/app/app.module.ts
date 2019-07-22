@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
-import {SignupComponent} from './signup/signup.component';
+import {SignUpComponent} from './signup/sign-up.component';
 import {ProfileComponent} from './profile/profile.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -15,14 +15,15 @@ import {AngularFireModule} from 'angularfire2';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from '../environments/environment';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {ProfileEditComponent} from './profile-edit/profile-edit.component';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent,
+    SignUpComponent,
     ProfileComponent,
     NotFoundComponent,
     ProfileEditComponent
@@ -38,7 +39,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

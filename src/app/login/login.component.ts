@@ -1,8 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import {AuthService} from "../auth/auth.service";
-import {Subscription} from "rxjs";
-import {NotifyService} from "../services/notify.service";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../auth/auth.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -12,27 +11,20 @@ import {NotifyService} from "../services/notify.service";
 export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
   subscription: Subscription;
-  notifySubscription: Subscription;
   invalidUser = false;
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
-    private notifyService: NotifyService
+    private authService: AuthService
   ) {
   }
 
   ngOnInit() {
     this.initForm();
-    this.notifySubscription = this.notifyService.getNotify()
-      .subscribe((isTrue: boolean) => {
-        console.log('any');
-        this.invalidUser = isTrue;
-      })
   }
 
   ngOnDestroy(): void {
-    if(this.subscription) this.subscription.unsubscribe();
+    if (this.subscription) this.subscription.unsubscribe();
   }
 
   initForm(): void {
@@ -50,8 +42,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
   }
 
-  submit(){
-    if(this.loginForm.valid) {
+  get email() { return this.loginForm.get('email'); }
+  get password() { return this.loginForm.get('password'); }
+
+  submit() {
+    if (this.loginForm.valid) {
       this.subscription = this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
         .subscribe();
     }

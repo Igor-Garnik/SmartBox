@@ -7,11 +7,6 @@
   margin: 10vh auto;
 }
 
-.form-field {
-  display: flex;
-  flex-direction: column;
-}
-
 .form-field div:first-child {
   width: 50%;
   color: $grey-color;
@@ -25,14 +20,10 @@
   display: flex !important;
 }
 
-.form-field div .mat-form-field-underline {
-  display: none;
-}
-
-.link:first-child {
+.link {
   color: $white-color;
 }
 
-.btn-block .link:first-child {
-  color: $white-color !important;
+.spinner {
+  margin: 10% auto;
 }

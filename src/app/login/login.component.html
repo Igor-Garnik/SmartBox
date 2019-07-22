@@ -3,21 +3,15 @@
   <form class="form" [formGroup]="loginForm" (ngSubmit)="submit()">
     <mat-form-field class="form-field">
       <input matInput placeholder="Email" formControlName="email">
-      <mat-error *ngIf="loginForm.get('email').invalid">Invalid email format</mat-error>
+      <mat-error *ngIf="email.invalid">Invalid email format</mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field">
       <input matInput placeholder="Password" formControlName="password">
-      <mat-error *ngIf="loginForm.get('password').invalid">
+      <mat-error *ngIf="password.invalid">
         Password must be between 6 and 24 chars and have at least one number
       </mat-error>
     </mat-form-field>
-
-    <mat-error>
-      <span class="notify" *ngIf="invalidUser">
-        Wrong email or password
-      </span>
-    </mat-error>
 
     <div class="btn-block">
       <button type="submit" mat-raised-button class="button">LOGIN</button>

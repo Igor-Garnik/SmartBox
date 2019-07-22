@@ -1,7 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {AuthService} from "../auth/auth.service";
-import {Subscription} from "rxjs";
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {AuthService} from '../auth/auth.service';
+import {Observable, Subscription} from "rxjs";
+import {UserService} from '../services/user.service';
+import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
+import DocumentData = firebase.firestore.DocumentData;
+import * as firebase from 'firebase';
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-profile',
@@ -11,27 +16,37 @@ import {Subscription} from "rxjs";
 export class ProfileComponent implements OnInit, OnDestroy{
   form: FormGroup;
   subscription: Subscription;
-  title = 'Hi Igor Garnik';
+  title: string;
+  user$: Observable<any>;
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
+    private userService: UserService,
   ) { }
 
   ngOnInit() {
-    this.initForm();
+    let userUid = JSON.parse(localStorage.getItem('user'));
+    this.user$ = this.userService.getUserById(userUid)
+      .pipe(
+        tap((document: DocumentSnapshot) => {
+          let user = document.data();
+          this.title = `Hi ${user.firstName} ${user.lastName}`;
+          this.initForm(user);
+        })
+      )
   }
 
   ngOnDestroy(): void {
-    if(this.subscription) this.subscription.unsubscribe();
+    if (this.subscription) this.subscription.unsubscribe();
   }
 
-  initForm(): void {
+  private initForm(user: DocumentData): void {
     this.form = this.fb.group({
-      firstName: ['Igor'],
-      lastName: ['Garnik'],
-      country: ['Ukraine'],
-      age: ['35']
+      firstName: [{value: user.firstName, disabled: true}],
+      lastName: [{value: user.lastName, disabled: true}],
+      age: [{value: user.age, disabled: true},],
+      country: [{value: user.country, disabled: true}]
     });
   }
 
