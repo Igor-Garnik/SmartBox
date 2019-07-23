@@ -1,14 +1,14 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {User} from "../user";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Observable, Subscription} from "rxjs";
-import {AuthService} from "../auth/auth.service";
-import {UserService} from "../services/user.service";
-import {tap} from "rxjs/operators";
+import {User} from '../user';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Observable, Subscription} from 'rxjs';
+import {AuthService} from '../auth/auth.service';
+import {UserService} from '../services/user.service';
+import {tap} from 'rxjs/operators';
 import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
 import DocumentData = firebase.firestore.DocumentData;
 import * as firebase from 'firebase';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile-edit',
@@ -36,7 +36,7 @@ export class ProfileEditComponent implements OnInit, OnDestroy {
         tap((document: DocumentSnapshot) => {
           this.initForm(document.data());
         })
-      )
+      );
   }
 
   ngOnDestroy(): void {

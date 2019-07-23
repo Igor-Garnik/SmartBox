@@ -43,7 +43,7 @@
     </mat-form-field>
 
     <div class="btn-block">
-      <button type="submit" mat-raised-button class="button">REGISTER</button>
+      <button type="submit" mat-raised-button [disabled]="signUpForm.invalid" class="button">REGISTER</button>
       <button mat-button class="button">
         <a class="link" routerLink="/login">LOGIN</a>
       </button>

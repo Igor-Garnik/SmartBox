@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {AuthService} from '../auth/auth.service';
-import {Subscription} from "rxjs";
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-sign-up',
@@ -76,8 +76,6 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   signUp() {
-    if (this.signUpForm.valid) {
-      this.subscription = this.authService.signUp(this.signUpForm.value).subscribe();
-    }
+    this.subscription = this.authService.signUp(this.signUpForm.value).subscribe();
   }
 }

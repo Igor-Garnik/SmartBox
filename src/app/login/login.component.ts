@@ -11,7 +11,6 @@ import {Subscription} from 'rxjs';
 export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
   subscription: Subscription;
-  invalidUser = false;
 
   constructor(
     private fb: FormBuilder,
@@ -46,9 +45,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   get password() { return this.loginForm.get('password'); }
 
   submit() {
-    if (this.loginForm.valid) {
-      this.subscription = this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
-        .subscribe();
-    }
+    this.subscription = this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
+      .subscribe();
   }
 }
