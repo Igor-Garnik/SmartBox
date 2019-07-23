@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   get password() { return this.loginForm.get('password'); }
 
   submit() {
-    this.subscription = this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
+    this.subscription = this.authService.login(this.email.value, this.password.value)
       .subscribe(
         res => console.log('HTTP response', res),
         err => this.error = err.message
