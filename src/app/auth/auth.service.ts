@@ -35,7 +35,7 @@ export class AuthService {
         mergeMap((user: any) => {
           return this.userService.addUser(user.user.uid, this.fillObject(form));
         }),
-        catchError(this.userService.handleError)
+        catchError(err => throwError(err))
       );
   }
 
@@ -46,7 +46,7 @@ export class AuthService {
         tap(() => {
           this.router.navigateByUrl('/profile').then();
         }),
-        catchError(this.userService.handleError)
+        catchError(err => throwError(err))
       );
   }
 
