@@ -41,6 +41,10 @@
       <input matInput placeholder="Country" formControlName="country" required>
       <mat-error *ngIf="country.invalid">Country is required field</mat-error>
     </mat-form-field>
+    
+     <mat-error>
+      {{error}}
+    </mat-error>
 
     <div class="btn-block">
       <button type="submit" mat-raised-button [disabled]="signUpForm.invalid" class="button">REGISTER</button>
