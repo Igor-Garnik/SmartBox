@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {User} from '../user';
-import {Observable} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 import {from} from 'rxjs';
 import {catchError, mergeMap, tap} from 'rxjs/internal/operators';
 import {UserService} from '../services/user.service';
@@ -29,7 +29,7 @@ export class AuthService {
     });
   }
 
-  signUp(form): Observable<void | Response> {
+  signUp(form): Observable<void | {}> {
     return from(this.afAuth.auth.createUserWithEmailAndPassword(form.email, form.password))
       .pipe(
         mergeMap((user: any) => {
