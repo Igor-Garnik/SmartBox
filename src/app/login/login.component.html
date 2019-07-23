@@ -12,6 +12,10 @@
         Password must be between 6 and 24 chars and have at least one number
       </mat-error>
     </mat-form-field>
+    
+      <mat-error>
+        {{error}}
+      </mat-error>
 
     <div class="btn-block">
       <button type="submit" mat-raised-button [disabled]="loginForm.invalid" class="button">LOGIN</button>
